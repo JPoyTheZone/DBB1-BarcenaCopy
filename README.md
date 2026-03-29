@@ -1,6 +1,6 @@
 The Digital Bulletin Board System is a project with a goal of
 making a centralized way of getting news and updates of our College, CVSU-Imus.
-![Alt text](School.jpeg)
+![Alt text](CVSUimus.jpg)
 
 
 

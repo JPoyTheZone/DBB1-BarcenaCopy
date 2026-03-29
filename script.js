@@ -47,6 +47,7 @@ function submitPost() {
   db.collection("posts").add({
     title,
     body,
+    banner,
     org,
     fb,
     submittedBy,
@@ -98,6 +99,7 @@ function renderFeed(query = "") {
       </div>
 
       <h3>${p.title} ${p.pinned ? '📌' : ''}</h3>
+      <img src="${p.banner || 'CVSUimus.jpg'}" alt="Banner Image" style="width: 100%; max-width: 360px; max-height: 200px; object-fit: cover; display: block; margin: 8px auto 0;">
       <p>${p.body}</p>
 
       <small>${p.org} · ${p.submittedBy} · ${timeAgo(p.date)}</small>
@@ -153,6 +155,7 @@ function pin(id) {
 /* ---------------- PREVIEW ---------------- */
 function renderPreview() {
   const title = val("title"),
+        banner = document.getElementById("bannerpreview").src,
         body = val("body"),
         org = document.getElementById("org").value,
         fb = val("fb"),
@@ -168,6 +171,7 @@ function renderPreview() {
       </div>
 
       <h3>${title}</h3>
+      <img src="${banner}" alt="Banner Image" style="width: 100%; max-width: 360px; max-height: 200px; object-fit: cover; display: block; margin: 8px auto 0;">
       <p>${body}</p>
       <small>${org} · ${submittedBy || ''} · just now</small>
 

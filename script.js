@@ -32,8 +32,12 @@ function submitPost() {
         org = document.getElementById("org").value,
         fb = val("fb"),
         submittedBy = val("submittedBy"),
+        banner = document.getElementById("banner").value,
         urgent = document.getElementById("urgent").checked,
         pinned = document.getElementById("pinned").checked;
+
+  console.log("Banner value:", banner);
+
 
   if (!title || !body || !org || !submittedBy) {
     showPopup("Please fill all required fields.");
@@ -200,6 +204,20 @@ function timeAgo(date) {
 
   if (el.type === "checkbox") el.addEventListener("change", renderPreview);
   else el.addEventListener("input", renderPreview);
+});
+
+// Add listener for banner file input
+document.getElementById("banner").addEventListener("change", function() {
+  console.log("Banner value:", this.value);
+  
+  const file = this.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById("bannerpreview").src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
 });
 
 /* ---------------- INIT ---------------- */
